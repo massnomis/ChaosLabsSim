@@ -451,6 +451,9 @@ st.code('''
 Historical Volatility is a good estimate of future volatility
 
 ''')
+st.code('''
+No Liquidations
+''')
 
 
 
