@@ -209,11 +209,11 @@ for collumn in monte_carlo_df:
 
     # monte_carlo_df['newVAR10'] = (monte_carlo_df[10] * change3)
 
-st.plotly_chart(px.line(monte_carlo_df, x=monte_carlo_df.index, y=[
+st.plotly_chart(px.bar(monte_carlo_df, x=monte_carlo_df.index, y=[
                 'newVAR1', 'newVAR2', 'newVAR3', 'newVAR4', 'newVAR5', 'newVAR6', 'newVAR7', 'newVAR8', 'newVAR9'], title="Asset Liabilities (protocol)"), use_container_width=True)
 # st.write(monte_carlo_df.columns)
-st.plotly_chart(px.line(monte_carlo_df, x=monte_carlo_df.index, y=[
-                'sim1', 'sim2', 'sim3', 'sim4', 'sim5', 'sim6', 'sim7', 'sim8', 'sim9'], title="Monte Carlo Sim"), use_container_width=True)
+st.plotly_chart(px.scatter(monte_carlo_df, x=monte_carlo_df.index, y=[
+                'sim1', 'sim2', 'sim3', 'sim4', 'sim5', 'sim6', 'sim7', 'sim8', 'sim9'], title="Monte Carlo Sim", marginal_y = 'histogram'), use_container_width=True)
 
 st.title("Solvency")
 
@@ -372,7 +372,7 @@ mega_insolvency_list['sim9'] = new_insolvency_list9
 # st.write(mega_insolvency_list)
 
 
-st.plotly_chart(px.line(mega_insolvency_list, title="Solvency Ratio"), use_container_width=True)
+st.plotly_chart(px.scatter(mega_insolvency_list, title="Solvency Ratio",marginal_y = 'histogram'), use_container_width=True)
 
 
 
