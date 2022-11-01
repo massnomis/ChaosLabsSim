@@ -59,15 +59,16 @@ data = response.json()
 df = pd.DataFrame(data)
 # st.write(df)
 
-montecarlo_duration = st.slider('How many days of simmulations', 1, 250, 60)
-iterations = 10
+montecarlo_duration = st.slider('How many days of simmulations', 20, 250, 60)
+iterations = 10 
+# iterations = st.slider('How many iterations of simmulations', 10, 1000, 10)
 
 
 rolling_volatility_days = st.slider(
     'How many days do you want to lookback for historical volatility?', 15, 60, 30)
 
 token = st.selectbox(
-    'Select a token', df['UNDERLYING_SYMBOL'].unique(), index=8)
+    'Select a token', df['UNDERLYING_SYMBOL'].unique(), index=5)
 
 
 df = df[df['UNDERLYING_SYMBOL'] == token]
@@ -209,8 +210,8 @@ for collumn in monte_carlo_df:
 
     # monte_carlo_df['newVAR10'] = (monte_carlo_df[10] * change3)
 
-st.plotly_chart(px.bar(monte_carlo_df, x=monte_carlo_df.index, y=[
-                'newVAR1', 'newVAR2', 'newVAR3', 'newVAR4', 'newVAR5', 'newVAR6', 'newVAR7', 'newVAR8', 'newVAR9'], title="Asset Liabilities (protocol)"), use_container_width=True)
+st.plotly_chart(px.scatter(monte_carlo_df, x=monte_carlo_df.index, y=[
+                'newVAR1', 'newVAR2', 'newVAR3', 'newVAR4', 'newVAR5', 'newVAR6', 'newVAR7', 'newVAR8', 'newVAR9'], title="Asset Liabilities (protocol)", marginal_y = 'histogram'), use_container_width=True)
 # st.write(monte_carlo_df.columns)
 st.plotly_chart(px.scatter(monte_carlo_df, x=monte_carlo_df.index, y=[
                 'sim1', 'sim2', 'sim3', 'sim4', 'sim5', 'sim6', 'sim7', 'sim8', 'sim9'], title="Monte Carlo Sim", marginal_y = 'histogram'), use_container_width=True)
