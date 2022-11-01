@@ -14,7 +14,7 @@ from helpers import calculate_borrow_total, calculate_supply_total, monte_carlo_
 from gql import gql, Client
 st.set_page_config(layout="wide")
 
-st.title("Compound Solvancy Analysis using Monte Carlo Simulations")
+st.title("Compound Solvency Analysis using Monte Carlo Simulations")
 api = 'https://node-api.flipsidecrypto.com/api/v2/queries/be234be0-dc93-4067-8d02-03b7bf2f8210/data/latest'
 
 response = requests.get(api)
