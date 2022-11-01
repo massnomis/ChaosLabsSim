@@ -15,6 +15,43 @@ from gql import gql, Client
 st.set_page_config(layout="wide")
 
 st.title("Compound Solvency Analysis using Monte Carlo Simulations")
+st.markdown('''
+# Data Science Assignment
+
+## Introduction
+
+Compound is a defi lending protocol on Ethereum. It allows **Lenders** to deposit their crypto assets and earn interest in return, as well as using them as collateral to **borrow** other assets (paying interest for doing so). Similarly to traditional banking, **lending** and **borrowing** introduces the risk of **insolvency**, a situation where the worth of borrowed assets is greater than value collateralized assets. When this happens, Lenders who wish to withdraw theirs deposits might not be able to do so. In order to mitigate this risk, Compound sets **Collateralization ratio (see Glossary below)** for different assets. when an account becomes **Under-collateralized,** it can get **liquidated** to cover debt. Our goal for this assignment is to optimize protocol parameters - minimize risk of liquidation and maximize borrow usage (protocol makes profit of **borrowers** interest). For deeper understanding of the protocol  see links: 
+
+- [https://compound.finance/](https://compound.finance/)
+- [https://compound.finance/docs/ctokens](https://compound.finance/docs/ctokens)
+- [https://compound.finance/documents/Compound.Whitepaper.pdf](https://compound.finance/documents/Compound.Whitepaper.pdf)
+
+### Assignment
+
+Using Compound data on theGraph:
+
+[https://thegraph.com/hosted-service/subgraph/graphprotocol/compound-v2](https://thegraph.com/hosted-service/subgraph/graphprotocol/compound-v2)
+
+1. Get all borrow positions on Compound.
+2. Using the markets() query or any other data source, e.g. coingecko, calculate the **volatility** of ****each asset that is available for supply/borrow on compound 
+3. Based on the volatility, generate 10 random price trajectories for each asset.
+4. For each price trajectory, measure the maximum insolvency ****of Compound. 
+5. Calculate the **Value at Risk** of the protocol given N measurements of (4)**.**
+6. Present results visually - explain the model and the metrics you used, as well as the  methodology.
+
+### Glossary
+
+- **Debt**: Amount of asset borrowed from an asset pool.
+- **Under-collateralized**: An account is under-collateralized if the value of an account’s debt
+exceeds the value of the collateral.
+- **Collateral factor**: Maximum debt-to-collateral ratio of an asset a user may borrow. When
+the debt-to-collateral ratio exceeds the collateral factor, the collateral is available to be
+liquidated.
+- **Value at Risk** - VaR modeling determines the potential for loss in the entity being assessed and the probability that the defined loss will occur. One measures VaR by assessing the amount of potential loss, the probability of occurrence for the amount of loss, and the timeframe.
+
+''')
+
+
 api = 'https://node-api.flipsidecrypto.com/api/v2/queries/be234be0-dc93-4067-8d02-03b7bf2f8210/data/latest'
 
 response = requests.get(api)
