@@ -444,7 +444,10 @@ st.write(liq_info)
 
 st.write('''
 Assumptions:
-No Correlations between assets
+''')
+st.code('''
+No Correlations between assets''')
+st.code('''
 Historical Volatility is a good estimate of future volatility
 
 ''')
